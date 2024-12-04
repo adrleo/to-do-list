@@ -7,9 +7,9 @@ import SwitchButton from "./components/SwitchButton";
 import { calculateProgress, sortTodos } from "./util";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [text, setText] = useState("");
-  const [isOn, setIsOn] = useState(false);
+  const [todos, setTodos] = useState([]); //list
+  const [text, setText] = useState(""); //input text
+  const [isOn, setIsOn] = useState(false); //switch button for sort by done tasks
 
   const addToDo = (todo) => {
     setTodos([...todos, todo]);
@@ -24,8 +24,8 @@ function App() {
 
   const toggleToDo = (id) => {
     setTodos(
-      todos.map((todo) =>
-        id === todo.id ? { ...todo, done: !todo.done } : todo
+      todos.map(
+        (todo) => (id === todo.id ? { ...todo, done: !todo.done } : todo) //toggle done status on checked or unchecked checkbox
       )
     );
   };
@@ -38,13 +38,8 @@ function App() {
     setIsOn(!isOn);
   };
 
-  // console.log("sort ", sortTodos(todos, isOn));
   const sortedCompletedTask = sortTodos(todos, isOn);
-
-  // const totalList = todos.length;
-  // const doneList = todos.filter((todo) => todo.done).length;
   const progress = calculateProgress(todos);
-  console.log({ sortedCompletedTask });
   return (
     <div className="flex flex-col h-screen bg-gradient-to-bl from-blue-100 to-indigo-100 text-blue-500">
       <header className="border-b-2 border-blue-400 mx-4 py-4">

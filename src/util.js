@@ -1,3 +1,4 @@
+//all utility functions here
 export const calculateProgress = (todos) => {
   const totalList = todos.length;
   const doneList = todos.filter((todo) => todo.done).length;
